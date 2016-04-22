@@ -1,19 +1,20 @@
-# extract-match-string
+# templateer
 
-match and extract from template strings
+extract text from strings that match templates or schema
+
+based on [extractjs](https://www.npmjs.com/package/extractjs)
 
 ## install
 
 ```
-npm install extract-match-strings
+npm install templateer
 ```
 
 ## use
 
 ```javascript
-var extractMatch = require('extract-match-strings')
-var template = "hello my {adj}, {noun}"
-var matcher = extractMatch(template)
+var templateer = require('templateer')
+var matcher = templateer("hello my {adj}, {noun}")
 matcher('hello fuzzy my friend')
 // > false
 matcher('hello my fuzzy, ')
@@ -26,18 +27,14 @@ if your template doesn't take arguments, this will still work for you.
 in this case, matcher will just return `{}` (which is truthy)
 
 ```javascript
-var matcher = extractMatch('/fall through the book')
+var matcher = templateer('/fall through the book')
 matcher('/fall through the book')
-// > {}
-matcher('/fall through the book nice')
-// > {}
-matcher('/fall through the book ')
-// > {}
+// {}
 ```
 
 ## api
 
-### var matcher = extractMatch('some cool {template}')
+### var matcher = templateer('some cool {template}')
 
 make a matcher for a template. 
 

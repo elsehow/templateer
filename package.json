@@ -1,5 +1,5 @@
 {
-  "name": "match-extract-strings",
+  "name": "templateeer",
   "description": "match and extract from template strings",
   "version": "1.0.0",
   "author": "elsehow",
@@ -25,7 +25,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/elsehow/match-extract-strings.git"
+    "url": "git+https://github.com/elsehow/templateer.git"
   },
   "keywords": [
     "template",
@@ -36,7 +36,7 @@
     "strings"
   ],
   "bugs": {
-    "url": "https://github.com/elsehow/match-extract-strings/issues"
+    "url": "https://github.com/elsehow/templateer/issues"
   },
-  "homepage": "https://github.com/elsehow/match-extract-strings#readme"
+  "homepage": "https://github.com/elsehow/templateer#readme"
 }
