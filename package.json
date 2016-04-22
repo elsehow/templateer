@@ -19,5 +19,24 @@
   "dependencies": {
     "extractjs": "^0.2.0",
     "lodash.every": "^4.3.0"
-  }
+  },
+  "directories": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/elsehow/match-extract-strings.git"
+  },
+  "keywords": [
+    "template",
+    "capture",
+    "extract",
+    "bind",
+    "regex",
+    "strings"
+  ],
+  "bugs": {
+    "url": "https://github.com/elsehow/match-extract-strings/issues"
+  },
+  "homepage": "https://github.com/elsehow/match-extract-strings#readme"
 }
