@@ -1,58 +1,55 @@
-# swarmlog-manager
+# extract-match-string
 
-manage your swarmlogs!
+match and extract from template strings
 
 ## install
 
 ```
-npm install swarmlog-manager
+npm install extract-match-strings
 ```
 
 ## use
 
 ```javascript
-var hubs = [ 'https://signalhub.mafintosh.com' ]
-var db = level('./manager-db')
-var manager = require('swarmlog-manager')(db, hubs)
-// an event triggered when a new key is added
-manager.on('swarmlog', s => {
-  console.log('new swarmlog!')
-  // we can also look up this log by corresponding pubkey
-  manager.get(keys.public, (err, res) => {
-   console.log(res === s)
-  })
-})
-// import some ssb keys
-var keys = require('./keys.json')
-// add them to the manager
-manager.add(keys)
+var extractMatch = require('extract-match-strings')
+var template = "hello my {adj}, {noun}"
+var matcher = extractMatch(template)
+matcher('hello fuzzy my friend')
+// > false
+matcher('hello my fuzzy, ')
+// > false
+matcher("hello my fuzzy, tree friends")
+// { adj: 'fuzzy', noun: 'tree friends'}
+```
 
-// > new swarmlog!
-// > true
+if your template doesn't take arguments, this will still work for you.
+in this case, matcher will just return `{}` (which is truthy)
+
+```javascript
+var matcher = extractMatch('/fall through the book')
+matcher('/fall through the book')
+// > {}
+matcher('/fall through the book nice')
+// > {}
+matcher('/fall through the book ')
+// > {}
 ```
 
 ## api
 
-### var manager = require('swarmlog-manager')(leveldb, signalhubs)
+### var matcher = extractMatch('some cool {template}')
 
-create a new swarmlog manager, using the given signalhubs and leveldb instance
+make a matcher for a template. 
 
-### manager.add(ssbkeys)
+see [extractjs](https://www.npmjs.com/package/extractjs) for more on the template string format.
 
-add a swarmlog, by its ssb keys
+### matcher('some cool string')
 
-### manager.logs
+if there is  match to the template, returns an object of template parameters associated to corresponding values in the string. (see example)
 
-an object of `{ ssbPublicKey: swarmlog, ... }`
+returns `false` if there is no match to the template
 
-### manager.on('swarmlog', cb)
-
-`cb(swarmlog)` is called whenever a new swarmlog is added (i.e. after `manager.add`)
-
-### manager.on('error, cb)
-
-`cb(err)` is called whenever there's some error
-
+if there is a match, but the template string takes no arguments, `matcher` will return `{}`
 
 ## license
 

@@ -1,4 +1,7 @@
 {
+  "name": "match-extract-strings",
+  "description": "match and extract from template strings",
+  "version": "1.0.0",
   "author": "elsehow",
   "license": "BSD-3-Clause",
   "main": "src/index.js",
@@ -10,8 +13,11 @@
     "watch": "npm-watch"
   },
   "devDependencies": {
-    "npm-watch": "^0.1.3"
+    "npm-watch": "^0.1.3",
+    "tape": "^4.5.1"
   },
   "dependencies": {
+    "extractjs": "^0.2.0",
+    "lodash.every": "^4.3.0"
   }
 }
