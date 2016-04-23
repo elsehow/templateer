@@ -1,7 +1,7 @@
 {
   "name": "templateer",
   "description": "match and extract from template strings",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "author": "elsehow",
   "license": "BSD-3-Clause",
   "main": "src/index.js",
@@ -17,7 +17,7 @@
     "tape": "^4.5.1"
   },
   "dependencies": {
-    "extractjs": "^0.2.0",
+    "extractjs": "^0.3.1",
     "lodash.every": "^4.3.0"
   },
   "directories": {

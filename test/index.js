@@ -34,13 +34,21 @@ test('should return {} when we have a match, but no arguments', t => {
   t.end()
 })
 
-
-test('robust multiword commands', t => {
+test('multiword commands', t => {
+var extractor = require('extractjs')()
   var template = "/you can {command} to go to {place}"
   var matcher = mod(template)
   t.notOk(matcher("/you can fall through the book"))
   var m = matcher("/you can fall through the book to go to a quiet island dock")
   t.deepEqual(m.command, 'fall through the book')
   t.deepEqual(m.place, 'a quiet island dock')
+  t.end()
+})
+
+test('match multiline', t => {
+  var matcher = mod("/make '{place}': {description}")
+  var m = matcher("/make 'the lake, further': wow\nnice")
+  t.deepEqual(m.place, 'the lake, further')
+  t.deepEqual(m.description, 'wow\nnice')
   t.end()
 })
